@@ -7,7 +7,7 @@ interface IMovieCardList{
   selected:string
 }
 const MovieCardList:React.FC<IMovieCardList> = ({selected}) => {
-  const [movies, setMovies] = useState();
+  const [movies, setMovies] = useState<any>();
   const fetchMovie = async () => {
     const options = {
       method: "GET",

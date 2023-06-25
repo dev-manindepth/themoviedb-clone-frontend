@@ -4,10 +4,10 @@ import bg1 from "../../assets/bg1.svg";
 import MovieCardList from "../movieCardList/MovieCardList";
 import { Suspense, useState } from "react";
 import Skeleton from "../skeleton/Skeleton";
-import { trendingSelector } from "../data";
+// import { trendingSelector } from "../data";
 
 const Main = () => {
-  const [trending,setTrending] = useState(trendingSelector);
+  // const [trending,setTrending] = useState(trendingSelector);
   const [selectedTrending,setSelectedTrending]= useState("day")
   return (
     <main>
