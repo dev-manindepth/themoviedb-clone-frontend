@@ -1,0 +1,57 @@
+.welcome {
+  height: 350px;
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+  color: white;
+  margin-top: 4rem;
+
+}
+.welcome__container {
+  padding: 2.5rem 2rem;
+  background-image: linear-gradient(
+      to right,
+      rgba(3, 37, 65, 0.8) 0%,
+      rgba(3, 37, 65, 0) 100%
+    ),
+    url("../../assets/welcome-background.jpg");
+  background-size: cover;
+}
+.welcome__container__heading {
+  font-weight: 700;
+  font-size: 3rem;
+}
+.welcome__container__subheading {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.welcome__container__search {
+  width: 100%;
+  margin: 2rem auto;
+  position: relative;
+}
+.welcome__container__search__container {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border-radius: 1.5rem;
+  border: none;
+  outline: none;
+  font-size: 1.1rem;
+  color: gray;
+}
+.welcome__container__search__container__btn {
+  position: absolute;
+  right: 0rem;
+  border: none;
+  background: linear-gradient(
+    to right,
+    rgba(30, 213, 169, 1) 0%,
+    rgba(1, 180, 228, 1) 100%
+  );
+  padding: 0 1rem;
+  border-radius: 1.5rem;
+  height: 100%;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+}

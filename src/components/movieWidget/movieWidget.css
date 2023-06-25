@@ -1,0 +1,20 @@
+.movie-widget{
+    max-width: 1300px;
+    width: 100%;
+    margin: 3rem auto;
+    /* border: 1px solid black; */
+    overflow: hidden;
+}
+.moviewidget__container{
+    background-position: 50% 200px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.header-text{
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+.column-header{
+    display: flex;
+    gap: 1rem;
+}

@@ -1,0 +1,155 @@
+.movie-banner-large {
+  height: 500px;
+  width: 100%;
+  background-position: left calc((50vw - 170px) - 340px) top;
+  /* background-repeat: no-repeat; */
+  margin-top: 64px;
+  color: #fff;
+}
+.movie-container {
+  max-width: 1300px;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  gap: 2rem;
+  padding: 1rem;
+}
+.movie-image-container {
+  height: 100%;
+  background-color: #032541;
+}
+.movie-image-container img {
+  height: 80%;
+}
+.movie-header {
+  font-size: 2.5rem;
+  color: #fff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.movie-subheader {
+  display: flex;
+  gap: 1rem;
+}
+
+.movie-release-year {
+  color: gray;
+  font-size: 2rem;
+}
+.movie-user-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.progress-bar-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.progress-chart {
+  transition: transform 0.2s ease;
+}
+.progress-chart:hover {
+  transform: scale(1.05);
+}
+.user-personalise {
+  display: flex;
+  gap: 1rem;
+}
+
+.tooltip {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #032541;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+.tooltip img {
+  width: 18px;
+  height: 18px;
+}
+.tooltip .tooltip-text {
+  visibility: hidden;
+  background-color: #032541;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  top: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.tooltip .tooltip-text::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-style: solid;
+  border-width: 0 10px 10px 10px;
+  border-color: transparent transparent #032541 transparent;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+}
+.play-trailer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+.play-trailer:hover p {
+  color: gray;
+}
+.play-trailer:hover svg path {
+  fill: gray;
+}
+.tagline {
+  font-style: italic;
+  opacity: 0.7;
+  margin-top: 1rem;
+}
+.overview-header {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+.movie-credits {
+  display: flex;
+}
+.movie-credits {
+  max-width: 1300px;
+  width: 100%;
+  display: flex;
+  overflow-x: scroll;
+  gap: 1rem;
+  padding: 1rem;
+  margin: auto;
+}
+.person-profile-info{
+  padding: 1rem .5rem;
+}
+.movie-cast-title{
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 1rem auto 0 auto;
+  max-width: 1300px;
+  width: 100%;
+  padding: .5rem 1rem 0 1rem;
+}

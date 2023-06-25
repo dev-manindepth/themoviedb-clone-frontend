@@ -1,0 +1,39 @@
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: 'Source Sans 3', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+    --lightGrey: 227,227,227;
+    --darkerGrey: 200,200,200;
+    --darkBlue: 3,37,65;
+    --lightBlue: 1,180,228;
+    --lighterGreen: 192,254,207;
+    --lightGreen: 30,213,169;
+}
+
+
+*{
+    margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar{
+    height: 8px;
+    width: 8px;
+}
+::-webkit-scrollbar-track{
+    background: transparent;
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 30px;
+    background-color: rgb(219,219,219);
+}

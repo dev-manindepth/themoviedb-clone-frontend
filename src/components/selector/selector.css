@@ -1,0 +1,23 @@
+.selector{
+    display: flex;
+    gap: 1rem;
+    border: 1px solid #032541;
+    border-radius: 1rem;
+    /* padding: 0rem 1.5rem; */
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.selector .selected{
+    border: none;
+    background-color: rgb(3,37,65);
+    border-radius: 1rem;
+    color: #1ed5a9;
+    padding: .3rem 1rem;
+    background-color: #032541;
+    font-weight: 500;
+    color: linear-gradient(to right, #c0fecf 0%, #1ed5a9 100%);
+    /* -webkit-background-clip: text; */
+    /* -webkit-text-fill-color: transparent; */
+}

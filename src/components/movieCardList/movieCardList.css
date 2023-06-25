@@ -1,0 +1,6 @@
+.movie-list-container{
+    display: flex;
+    overflow-x: scroll;
+    gap: 1rem;
+    padding: 1rem;
+}

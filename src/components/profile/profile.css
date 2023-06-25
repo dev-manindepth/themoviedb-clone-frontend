@@ -1,0 +1,30 @@
+.profile-container {
+  width: 150px;
+  height: 250px;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(var(--lightGrey), 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.profile-image-container {
+  height: 150px;
+  width: 150px;
+  overflow: hidden;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+.profile-image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.profile-placeholder-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.person-original-name{
+    font-weight: 700;
+    color: black;
+}
+.person-character-name{
+    font-size: .8rem;
+}

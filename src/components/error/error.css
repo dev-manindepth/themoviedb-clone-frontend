@@ -1,0 +1,27 @@
+.global-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 20px;
+  border-radius: 4px;
+  width: 100vw;
+  height: 100vh;
+}
+
+.global-error__content {
+  max-width: 500px;
+  margin: 40vh auto;
+  text-align: center;
+}
+
+.global-error__title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.global-error__message {
+  font-size: 18px;
+}
+.global-error__reroute{
+    color: black;
+    font-size: 2rem;
+}
