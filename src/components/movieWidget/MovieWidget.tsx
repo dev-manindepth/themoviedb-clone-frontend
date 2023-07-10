@@ -7,14 +7,14 @@ interface IMovieWidgetProps {
   headerText: string;
   selectors: string[];
   children: ReactNode;
-  setSelectedTrending:(str:string)=>void;
+  setSelectedTrending: (str: string) => void;
 }
 const MovieWidget: React.FC<IMovieWidgetProps> = ({
   bgImage,
   headerText,
   selectors,
   children,
-  setSelectedTrending
+  setSelectedTrending,
 }) => {
   return (
     <section className="movie-widget">

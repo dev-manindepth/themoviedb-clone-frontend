@@ -1,4 +1,4 @@
-import './welcome.css';
+import "./welcome.css";
 const Welcome = () => {
   return (
     <section className="welcome">
@@ -8,18 +8,18 @@ const Welcome = () => {
           Millions of movies, TV shows and people to discover. Explore now.
         </div>
         <div className="welcome__container__search">
-          <input
-            type="text"
-            className="welcome__container__search__container"
-            placeholder="Search for a movie, tv show, person....."
-          />
-          <button className="welcome__container__search__container__btn">
-            Search
-          </button>
+          <div className="welcome__container__search__input">
+            <input
+              type="text"
+              // placeholder="Search for a movie, tv show, person....."
+              placeholder="Search..."
+            />
+            <div className="welcome__container__search__btn">Search</div>
+          </div>
         </div>
       </div>
     </section>
   );
-}
+};
 
-export default Welcome
+export default Welcome;

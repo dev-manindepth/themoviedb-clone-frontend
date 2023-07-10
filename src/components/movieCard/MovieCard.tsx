@@ -20,10 +20,12 @@ const MovieCard:React.FC<IMovieCardProp> = ({movie}) => {
   return (
     <div className="movie-card-container">
       <div className="movie-thumbnail">
+        <div className="loading-overlay"></div>
         <Link to={`/${movie.media_type}/${movie.id}`}>
           <img
             src={`${process.env.IMAGE_PATH_SM}${movie.backdrop_path}`}
             alt=""
+            loading="lazy"
           />
         </Link>
       </div>

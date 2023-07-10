@@ -3,11 +3,24 @@
   width: 145px;
   border-radius: 0.5rem;
   overflow: hidden;
+  position: relative;
 }
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #f2f2f2 0%, #e6e6e6 50%, #f2f2f2 100%);
+  z-index: 1;
+}
+
 .movie-thumbnail img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: relative;
+  z-index: 2;
 }
 .rating-bar-circular {
   position: absolute;
@@ -17,7 +30,7 @@
   width: 45px;
   height: 45px;
   border-radius: 100%;
-    background-color: #081c22;
+  background-color: #081c22;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,7 +40,7 @@
   margin-top: 2rem;
   position: relative;
 }
-.movie-link{
+.movie-link {
   color: #000;
   text-decoration: none;
 }
@@ -35,7 +48,7 @@
   font-weight: 700;
   font-size: 0.95rem;
 }
-.movie-title:hover{
+.movie-title:hover {
   color: #01b4e4;
 }
 .movie-release-date {

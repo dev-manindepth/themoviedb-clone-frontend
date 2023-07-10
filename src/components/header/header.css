@@ -6,22 +6,109 @@
   top: 0;
   width: 100%;
   height: 64px;
+  z-index: 5;
 }
 .header__container {
-    max-width: 1300px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    padding: 0 2rem;
+  max-width: 1300px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 .header__container__left,
 .header__container__right {
   display: flex;
   gap: 1rem;
   font-weight: 600;
-  font-size: .95rem;
+  font-size: 0.95rem;
 }
 .header.hidden {
   display: none;
+}
+.mobile__header__container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+.mobile__header__right__container {
+  display: flex;
+  gap: 1rem;
+}
+.mobile__menu {
+  width: 0;
+  height: 100vh;
+  margin-top: 20px;
+  background: rgba(var(--darkBlue), 0.9);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  padding: 1.4rem;
+  border: 1px solid tomato;
+  animation-name: openMenu;
+  animation-duration: .5s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+@keyframes openMenu {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 90%;
+  }
+}
+.mobile__menu__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.mobile__menu__nav__header {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.mobile__menu__nav__movie-submenu,
+.mobile__menu__nav__tv-submenu,
+.mobile__menu__nav__people-submenu {
+  display: flex;
+  flex-direction: column;
+}
+.mobile__menu__nav__movie-submenu a,
+.mobile__menu__nav__tv-submenu a,
+.mobile__menu__nav__people-submenu a {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+.mobile__menu__secondary,
+.mobile__menu__login-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+.mobile__menu__secondary a,
+.mobile__menu__login-btn a {
+  color: #ffffff99;
+  font-weight: 500;
+  text-decoration: none;
+}
+@media (max-width: 786px) {
+  .header__container {
+    display: none;
+  }
+  .mobile__header__container {
+    display: flex;
+  }
+}
+@media (min-width: 786px) {
+  .mobile__header__container {
+    display: none;
+  }
 }

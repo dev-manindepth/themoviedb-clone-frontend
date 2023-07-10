@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./movieDetailPage.css";
 import CircularProgress from "../progress/CircularProgress";
@@ -8,6 +8,7 @@ import bookmark from "../../assets/bookmark.png";
 import star from "../../assets/star.png";
 import Profile from "../profile/Profile";
 import Tabs from "../tabs/Tabs";
+import useFetch from "../../hooks/useFetch";
 const getYear = (date: string) => {
   return new Date(date).getFullYear();
 };
@@ -15,105 +16,72 @@ const MovieDetailPage = () => {
   const [reviewActive, setReviewActive] = useState<"review" | "discussion">(
     "review"
   );
-  const [movie, setMovie] = useState<ApiResponse | undefined>(undefined);
-  const [credits, setCredits] = useState<CreditResponse | undefined>(undefined);
-  const [reviews, setReviews] = useState<ReviewResponse | undefined>(undefined);
   const { movieId, tvId } = useParams();
 
-  type ApiResponse = ResponseType<typeof fetchMoviesById>;
-  type CreditResponse = ResponseType<typeof fetchMovieCredit>;
-  type ReviewResponse = ResponseType<typeof fetchMovieReview>;
-  type ResponseType<T> = T extends Promise<infer R> ? R : any;
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${process.env.JWT}`,
-    },
-  };
-  async function fetchMoviesById(): Promise<Response> {
-    const response = await fetch(
-      `${process.env.BASE_URL}/${movieId ? "movie" : "tv"}/${
-        movieId ? movieId : tvId
-      }`,
-      options
-    );
-    return await response.json();
-  }
-  async function fetchMovieCredit(): Promise<Response> {
-    const response = await fetch(
-      `${process.env.BASE_URL}/${movieId ? "movie" : "tv"}/${
-        movieId ? movieId : tvId
-      }/credits`,
-      options
-    );
-    return await response.json();
-  }
-  async function fetchMovieReview(): Promise<Response> {
-    const response = await fetch(
-      `${process.env.BASE_URL}/${movieId ? "movie" : "tv"}/${
-        movieId ? movieId : tvId
-      }/reviews`,
-      options
-    );
-    return await response.json();
-  }
-  useEffect(() => {
-    fetchMoviesById().then((data) => setMovie(data));
-  }, [movieId, tvId]);
-  useEffect(() => {
-    fetchMovieCredit().then((data) => setCredits(data));
-  }, [movieId, tvId]);
-  useEffect(() => {
-    fetchMovieReview().then((data) => setReviews(data));
-  }, [movieId, tvId]);
-  console.log("detail page -->", movie);
-  console.log("movie credit", credits);
-  console.log("Movie reviews", reviews);
+  const [movieData, isMovieLoading, movieError] = useFetch(
+    `${process.env.BASE_URL}/${movieId ? "movie" : "tv"}/${
+      movieId ? movieId : tvId
+    }`
+  );
+  const [movieCredits, isMovieCreditsLoading, moviewCreditError] = useFetch(
+    `${process.env.BASE_URL}/${movieId ? "movie" : "tv"}/${
+      movieId ? movieId : tvId
+    }/credits`
+  );
 
+  const [movieReview, isMoviewReviewLoading, moviewReviewError] = useFetch(
+    `${process.env.BASE_URL}/${movieId ? "movie" : "tv"}/${
+      movieId ? movieId : tvId
+    }/reviews`
+  );
   return (
     <div>
       <Suspense fallback={<h1>Loading</h1>}>
-        {movie && (
+        {movieData && (
           <div
             className="movie-banner-large"
             style={{
               background: `linear-gradient(to bottom right, rgba(31.5, 10.5, 10.5, 1), rgba(31.5, 10.5, 10.5, 0.84)), url(${
                 process.env.IMAGE_PATH_LG
               }${
-                movie.backdrop_path ? movie.backdrop_path : movie.poster_path
+                movieData.backdrop_path
+                  ? movieData.backdrop_path
+                  : movieData.poster_path
               })`,
             }}
           >
             <div className="movie-container">
               <div className="movie-image-container">
                 <img
-                  src={`${process.env.IMAGE_PATH_MD}${movie.poster_path}`}
+                  src={`${process.env.IMAGE_PATH_MD}${movieData.poster_path}`}
                   alt=""
+                  loading="lazy"
                 />
               </div>
               <div className="movie-details">
                 <div className="movie-header-info">
                   <div className="movie-header">
-                    {movie.original_title}
-                    {movie.release_date && (
+                    {movieData.original_title}
+                    {movieData.release_date && (
                       <span className="movie-release-year">
-                        ({getYear(movie.release_date)})
+                        ({getYear(movieData.release_date)})
                       </span>
                     )}
                   </div>
                   <div className="movie-subheader">
-                    {movie.genres.map((genre: any, index: number) => (
+                    {movieData.genres.map((genre: any, index: number) => (
                       <span key={genre.id}>
                         {genre.name}{" "}
-                        {movie.genres.length - 1 != index ? "," : ""}
+                        {movieData.genres.length - 1 != index ? "," : ""}
                       </span>
                     ))}
                   </div>
                   <div className="movie-user-actions">
                     <div className="progress-bar-action">
                       <div className="progress-chart">
-                        <CircularProgress vote_average={movie.vote_average} />
+                        <CircularProgress
+                          vote_average={movieData.vote_average}
+                        />
                       </div>
                       <div>
                         User <br /> Score
@@ -160,28 +128,28 @@ const MovieDetailPage = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="tagline">{movie.tagline}</div>
+                  <div className="tagline">{movieData.tagline}</div>
                   <div className="overview">
                     <div className="overview-header">Overview</div>
-                    <div className="overview-text">{movie.overview}</div>
+                    <div className="overview-text">{movieData.overview}</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         )}
-        {credits && (
+        {movieCredits && (
           <>
             <div className="movie-cast-title">Top Billed Cast</div>
             <div className="movie-credits">
-              {credits.cast.length > 10 &&
-                credits.cast
+              {movieCredits.cast.length > 10 &&
+                movieCredits.cast
                   .slice(0, 18)
                   .map((credit: any) => <Profile person={credit} />)}
             </div>
           </>
         )}
-        {reviews && (
+        {movieReview && (
           <section>
             <div className="review-section-header">
               <div>Social</div>{" "}
