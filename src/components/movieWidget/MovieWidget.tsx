@@ -1,20 +1,35 @@
-import { ReactNode } from "react";
+import { Dispatch, ReactNode } from "react";
 import "./movieWidget.css";
 import Selector from "../selector/Selector";
-
+import { TrendingAction } from "../../actions/trendingActions";
+import { PopularActions } from "../../actions/popularActions";
+import { TrailerAction } from "../../actions/trailerActions";
+import { WatchActions } from "../../actions/watchActions";
 interface IMovieWidgetProps {
   bgImage?: string;
   headerText: string;
-  selectors: string[];
+  selectorData: ISelector[];
+  dispatch: Dispatch<
+    TrendingAction | PopularActions | TrailerAction | WatchActions
+  >;
   children: ReactNode;
-  setSelectedTrending: (str: string) => void;
+  data: {};
+}
+export interface ISelector {
+  id: number;
+  text: string;
+  setSelector: () =>
+    | TrendingAction
+    | PopularActions
+    | TrailerAction
+    | WatchActions;
 }
 const MovieWidget: React.FC<IMovieWidgetProps> = ({
   bgImage,
   headerText,
-  selectors,
   children,
-  setSelectedTrending,
+  dispatch,
+  selectorData,
 }) => {
   return (
     <section className="movie-widget">
@@ -26,12 +41,8 @@ const MovieWidget: React.FC<IMovieWidgetProps> = ({
       >
         <div className="column-header">
           <div className="header-text">{headerText}</div>
-          <Selector
-            selectors={selectors}
-            setSelectedTrending={setSelectedTrending}
-          />
+          <Selector dispatch={dispatch} selectorData={selectorData} />
         </div>
-
         {children}
       </div>
     </section>

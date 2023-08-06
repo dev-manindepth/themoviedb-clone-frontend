@@ -1,30 +1,37 @@
-import { useState } from "react";
+import { Dispatch, useState } from "react";
 import "./selector.css";
+import { TrendingAction } from "../../actions/trendingActions";
+import { ISelector } from "../movieWidget/MovieWidget";
+import { PopularActions } from "../../actions/popularActions";
+import { TrailerAction } from "../../actions/trailerActions";
+import { WatchActions } from "../../actions/watchActions";
 interface ISelectorProp {
-  selectors: string[];
-  setSelectedTrending: (str: string) => void;
+  dispatch: Dispatch<
+    TrendingAction | PopularActions | TrailerAction | WatchActions
+  >;
+  selectorData: ISelector[];
 }
-const Selector: React.FC<ISelectorProp> = ({
-  selectors,
-  setSelectedTrending,
-}) => {
-  const [selected, setSelected] = useState(0);
+
+const Selector: React.FC<ISelectorProp> = ({ dispatch, selectorData }) => {
+  const [active, setActive] = useState(0);
   return (
-    <div className="selector">
-      {selectors.map((selector, idx) => {
-        return (
-          <div
-            key={selector}
-            className={idx == selected ? "selected" : ""}
-            onClick={() => {
-              setSelectedTrending(selector);
-              setSelected(idx);
-            }}
-          >
-            {selector}
-          </div>
-        );
-      })}
+    <div className="selector_wrapper">
+      <div className="selector">
+        {selectorData.map(({ id, text, setSelector }, idx) => {
+          return (
+            <div
+              key={id}
+              className={idx == active ? "selected" : ""}
+              onClick={() => {
+                dispatch(setSelector());
+                setActive(idx);
+              }}
+            >
+              {text}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
